@@ -1,0 +1,41 @@
+class Auth
+{
+    private  $email = '123@123';
+    private  $senha = '202cb962ac59075b964b07152d234b70';
+
+    public static function verifica($email, $senha)
+    {
+        if (!(md5($senha) === $this->senha) || !($email === $this->email)) {
+            header('Location: index.php?erro=usuario ou senha invalido');
+        }
+    }
+
+}
+
+//Auth::verifica($_POST['email'],$_POST['senha']);
+
+
+
+
+
+
+<?php
+
+class Auth
+{
+    private  $email = '123@123';
+    private  $senha = '202cb962ac59075b964b07152d234b70';
+
+    public function verifica($email, $senha)
+    {
+        if (!(md5($senha) === $this->senha) || !($email === $this->email)) {
+            header('Location: index.php?erro=usuario ou senha invalido');
+        }
+    }
+
+}
+
+$p = new Auth;
+$p->verifica($_POST['email'],$_POST['senha']);
+
+echo 'Página OK'; 
