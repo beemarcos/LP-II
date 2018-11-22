@@ -1,6 +1,3 @@
-#LP II
-<<<<<<< HEAD
+# Linguagem de Programacao II
 
-=======
->>>>>>> master
 Codigos desenvolvidos durante a disciplina. 
