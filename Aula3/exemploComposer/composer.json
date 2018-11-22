@@ -1,0 +1,11 @@
+{
+    "name": "marcos/exemplo-composer",
+    "description": "Exemplo usando composer",
+    "authors": [
+        {
+            "name": "Marcos Bee",
+            "email": "beemarcos72@gmail.com"
+        }
+    ],
+    "require": {}
+}
