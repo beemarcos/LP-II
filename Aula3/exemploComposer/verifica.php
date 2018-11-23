@@ -5,8 +5,7 @@ require_once './bootload.php';
 use App\utils\Auth;
 use \Plasticbrain\FlashMessages;
 
-
-
+//Autenticação
 if (! isset($_SESSION['user']['email'])) {
 
     if ( Auth::verifica($_POST['email'], $_POST['senha']) ) {
@@ -17,7 +16,7 @@ if (! isset($_SESSION['user']['email'])) {
         $_SESSION['error'] = 'Error';
     }
 }
-
+//Mensagem flash
 if ( isset($_SESSION['flash']) ) {
     $msg = new \Plasticbrain\FlashMessages\FlashMessages();
     $msg->success('Logado com sucesso!');
@@ -25,11 +24,7 @@ if ( isset($_SESSION['flash']) ) {
     unset($_SESSION['flash']);
 }
 
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -58,5 +53,3 @@ if ( isset($_SESSION['flash']) ) {
     </div>
 </body>
 </html>
-
-

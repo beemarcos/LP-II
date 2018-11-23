@@ -14,5 +14,4 @@ class Auth
             return false;
         }
     }
-
 }
