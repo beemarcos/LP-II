@@ -24,9 +24,17 @@ class ComposerStaticInite0a9364abe2c1d86443375a064b944cd
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
         ),
+        'P' => 
+        array (
+            'Plasticbrain\\FlashMessages\\' => 27,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -49,9 +57,17 @@ class ComposerStaticInite0a9364abe2c1d86443375a064b944cd
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
