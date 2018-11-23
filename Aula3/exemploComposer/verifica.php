@@ -7,7 +7,6 @@ use \Plasticbrain\FlashMessages;
 
 
 
-
 if (! isset($_SESSION['user']['email'])) {
 
     if ( Auth::verifica($_POST['email'], $_POST['senha']) ) {
@@ -15,6 +14,7 @@ if (! isset($_SESSION['user']['email'])) {
         $_SESSION['flash'] = 'Registered';
     } else {
         header( 'Location: index.php?erro=usuario ou senha invalido' );
+        $_SESSION['error'] = 'Error';
     }
 }
 
@@ -36,6 +36,8 @@ if ( isset($_SESSION['flash']) ) {
 <head>
     <title>Pagina inicial</title>
     <?php include_once('partials/links.php'); ?>
+    <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="container-fluid">
