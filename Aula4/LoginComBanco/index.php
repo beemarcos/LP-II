@@ -22,7 +22,7 @@ if ( isset($_SESSION['error']) ) {
     <div class="login-form">
     <div class="main-div">
         <div class="panel">
-    <h2>Login do usuário</h2>
+    <h2>Login do usuário (DB)</h2>
     <?php    
         if( isset($_GET['erro']) ){
             echo '<p style="color: red">Usuário ou senha incorretos!</p>';

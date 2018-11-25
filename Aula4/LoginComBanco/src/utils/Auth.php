@@ -2,16 +2,31 @@
 
 namespace App\utils;
 
+define('HOST', '127.0.0.1');
+define('USUARIO', 'root');
+define('SENHA', '123');
+define('DB', 'login');
+
 class Auth
 {
     public static function verifica($email, $senha)
     {
-        if ( md5($senha) === '202cb962ac59075b964b07152d234b70' ) {
-            if ( ($email === '123@123') || ($email === '456@456')) {
-                return true;
-            }
-        } else {
+        $conexao = mysqli_connect(HOST, USUARIO, SENHA, DB) or die('Não foi possível conectar o banco de dados');
+        
+        $query = "select usuario_id, usuario from usuario where usuario = '{$email}' and senha = md5('{$senha}')";
+        $result = mysqli_query($conexao, $query);
+        $row = mysqli_num_rows($result);
+        if ($row == 1){
+            return true;
+        }else{
             return false;
         }
     }
+    public static function insere(){
+        
+    }
 }
+
+
+
+
