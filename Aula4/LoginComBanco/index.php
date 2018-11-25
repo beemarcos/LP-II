@@ -31,7 +31,7 @@ if ( isset($_SESSION['error']) ) {
         }
     ?>
     </div>
-        <form id="Login" action="verifica.php" method="post">
+        <form id="Login" action="home.php" method="post">
             <div class="form-group">
                 <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Endereço de email">
             </div>
@@ -41,7 +41,6 @@ if ( isset($_SESSION['error']) ) {
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
         <a href="cadastro.php">Ainda não sou cadastrado!</a>
-
     </div>
     </div>
     </div>

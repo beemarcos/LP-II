@@ -16,12 +16,11 @@ if (! isset($_SESSION['user']['email'])) {
         $_SESSION['error'] = 'Error';
     }
 }
-
+//Mensagem flash
 if ( isset($_SESSION['flash']) ) {
     $msg = new \Plasticbrain\FlashMessages\FlashMessages();
     $msg->success('Registrado com sucesso!');
-    
 }
 
-header( 'Location: verifica.php' );
+header( 'Location: home.php' );
 ?>

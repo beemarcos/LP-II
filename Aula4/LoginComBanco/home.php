@@ -6,7 +6,7 @@ use App\utils\Auth;
 use \Plasticbrain\FlashMessages;
 
 //Autenticação
-if (! isset($_SESSION['user']['email'])) {
+if ( ! isset( $_SESSION['user']['email'] ) ) {
 
     if ( Auth::verifica($_POST['email'], $_POST['senha']) ) {
         $_SESSION['user']['email'] = $_POST['email'];
@@ -19,8 +19,8 @@ if (! isset($_SESSION['user']['email'])) {
 //Mensagem flash
 if ( isset($_SESSION['flash']) ) {
     $msg = new \Plasticbrain\FlashMessages\FlashMessages();
-    $msg->success('Logado com sucesso!');
-    $msg->display();
+    $msg -> success('Logado com sucesso!');
+    $msg -> display();
     unset($_SESSION['flash']);
 }
 
