@@ -12,16 +12,15 @@ class PessoaDao
         $enviar->execute();
     }
 
-    public function read()
+    public function read(Pessoa $p)
     {
         //Busca uma pessoa
-        $sql = 'SELECT * FROM usuario';
+        $sql = "SELECT usuario FROM usuario WHERE usuario = '{$p->getUsuario()}'AND senha = '{$p->getSenha()}'";//
         $enviar = Conexao::getConexao()->prepare($sql);
         $enviar->execute();
         if ($enviar->rowCount() > 0) {
-            $resultado = $enviar->fetchAll(\PDO::FETCH_ASSOC);
-            return $resultado;
+            return true;
         }
-        return [];
+        return false;
     }
 }
