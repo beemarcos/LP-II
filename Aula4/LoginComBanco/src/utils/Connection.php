@@ -11,7 +11,7 @@ class Connection
     {
         try {
             $db = new PDO("mysql:host={$servername};dbname={$dbname};charset=utf8",'root','123');
-            //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected successfully<br/>";
             return $db;
         }
