@@ -62,7 +62,7 @@ class Pessoa
      */ 
     public function setSenha($senha)
     {
-        $this->senha = $senha;
+        $this->senha = md5($senha);
 
         return $this;
     }

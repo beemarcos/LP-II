@@ -7,7 +7,7 @@ class PessoaDao
     public function create(Pessoa $p)
     {
         //Cadastra uma pessoa
-        $sql = "INSERT INTO usuario (usuario, senha) VALUES ( '{$p->getCodigo()}', '{$p->getSenha()}')";
+        $sql = "INSERT INTO usuario (usuario, senha) VALUES ( '{$p->getUsuario()}', '{$p->getSenha()}')";
         $enviar = Conexao::getConexao()->prepare($sql);
         $enviar->execute();
     }
@@ -19,7 +19,7 @@ class PessoaDao
         $enviar = Conexao::getConexao()->prepare($sql);
         $enviar->execute();
         if ($enviar->rowCount() > 0) {
-            $resultado = $enviar->fetchAll(PDO::FETCH_ASSOC);
+            $resultado = $enviar->fetchAll(\PDO::FETCH_ASSOC);
             return $resultado;
         }
         return [];
