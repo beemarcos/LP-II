@@ -1,5 +1,4 @@
 <?php
-
 namespace App\utils;
 
 $servername = "localhost";
@@ -7,22 +6,13 @@ $dbname = "login";
 
 class Connection
 {
+    public static $instance;
+
     public static function getConnection()
     {
-        try {
-            $db = new PDO("mysql:host={$servername};dbname={$dbname};charset=utf8",'root','123');
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connected successfully<br/>";
-            return $db;
+        if(!isset(self::$instance)){
+            self::$instance = new \PDO("mysql:host={$servername};dbname={$dbname}",'root','123');
         }
-        catch(PDOException $e)
-        {
-            echo "Connection failed: " . $e->getMessage();
-        }
+        return self::$instance;        
     }
-
 }
-
-//var_dump(Connection::getConnection());
-
-?>

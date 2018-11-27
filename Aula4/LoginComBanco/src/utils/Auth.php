@@ -1,7 +1,7 @@
 <?php
-
 namespace App\utils;
-use Connection;
+
+use App\utils\Connection;
 
 class Auth
 {
@@ -11,8 +11,9 @@ class Auth
             Codigo para SQL Injection
         */
 
-        $connection = Connection::getConnection();
-        $query = $connection->prepare("SELECT usuario_id, usuario FROM usuario where  usuario = '{$email}' and senha = md5('{$senha}')");
+        $con = Connection::getConnection();
+        $connection->exec("use login");
+        $query = $con->prepare("SELECT usuario_id, usuario FROM usuario where  usuario = '{$email}' and senha = md5('{$senha}')");
         $query->execute();
         if ( $query->rowCount() == 1 ) {
             return true;
@@ -22,14 +23,10 @@ class Auth
     }
     public static function insere($email, $senha)
     {
-        $connection = Connection::getConnection();
+        $con = Connection::getConnection();
         $query = "insert into usuario (usuario, senha)
         values ('{$email}', md5('{$senha}'))";
-        $connection->exec($query);
+        $con->exec($query);
         return true;
     }
 }
-
-
-
-

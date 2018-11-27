@@ -7,7 +7,6 @@ use \Plasticbrain\FlashMessages;
 
 //Autenticação
 if ( ! isset( $_SESSION['user']['email'] ) ) {
-
     if ( Auth::verifica($_POST['email'], $_POST['senha']) ) {
         $_SESSION['user']['email'] = $_POST['email'];
         $_SESSION['flash'] = 'Registered';
