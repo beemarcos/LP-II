@@ -15,6 +15,14 @@ if ($pDao->read($p)){
     echo 'nop';
 }
 
+//Mensagem flash de erro
+if ( isset($_SESSION['error']) ) {
+    $msg = new \Plasticbrain\FlashMessages\FlashMessages();
+    $msg->error('Usuário ou senha incorretos');
+    $msg->display();
+    unset($_SESSION['error']);
+}
+
 ?>
 
 
