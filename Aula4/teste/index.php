@@ -55,7 +55,7 @@ if ( isset($_SESSION['error']) ) {
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
-        <a href="cadastro.php">Ainda não sou cadastrado!</a>
+        <a href="registra.php">Ainda não sou cadastrado!</a>
     </div>
     </div>
     </div>
