@@ -1,6 +1,7 @@
 <?php
 
 require_once 'bootload.php';
+
 //Mensagem flash de erro
 if ( isset($_SESSION['error']) ) {
     $msg = new \Plasticbrain\FlashMessages\FlashMessages();
@@ -10,7 +11,6 @@ if ( isset($_SESSION['error']) ) {
 }
 
 ?>
-
 <html>
     <head>
     <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>

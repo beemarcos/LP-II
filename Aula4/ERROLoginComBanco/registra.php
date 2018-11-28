@@ -1,17 +1,14 @@
 <?php
-require_once 'bootload.php';
 
+require_once './bootload.php';
+
+use App\utils\Auth;
 use \Plasticbrain\FlashMessages;
 
 //Autenticação
 if (! isset($_SESSION['user']['email'])) {
 
-    $p = new \App\Model\Pessoa();
-    $p->setUsuario($_POST['email']);
-    $p->setSenha($_POST['senha']);
-    $pDao = new \App\Model\PessoaDao();
-
-    if ( $pDao->create($p) ) {
+    if ( Auth::insere($_POST['email'], $_POST['senha']) ) {
         $_SESSION['user']['email'] = $_POST['email'];
         $_SESSION['flash'] = 'Registered';
     } else {

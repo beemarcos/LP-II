@@ -1,5 +1,7 @@
 <?php
+
 require_once 'bootload.php';
+
 ?>
 
 <html>
