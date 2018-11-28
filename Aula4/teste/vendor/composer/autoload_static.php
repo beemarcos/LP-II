@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitb25438304bb84dba7eb6153b5a521daa
 {
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Plasticbrain\\FlashMessages\\' => 27,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +18,10 @@ class ComposerStaticInitb25438304bb84dba7eb6153b5a521daa
     );
 
     public static $prefixDirsPsr4 = array (
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App',

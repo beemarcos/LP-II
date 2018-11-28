@@ -3,5 +3,9 @@
         "psr-4": {
             "App\\":"App/"
         }
+    },
+    "require": {
+        "plasticbrain/php-flash-messages": "^1.0",
+        "twbs/bootstrap": "^4.1"
     }
 }
