@@ -9,7 +9,11 @@ class PessoaDao
         //Cadastra uma pessoa
         $sql = "INSERT INTO usuario (usuario, senha) VALUES ( '{$p->getUsuario()}', '{$p->getSenha()}')";
         $enviar = Conexao::getConexao()->prepare($sql);
-        $enviar->execute();
+        if ( $enviar->execute() ){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function read(Pessoa $p)
