@@ -2,7 +2,6 @@
 
 require_once 'vendor/autoload.php';
 
-$pDao = new \App\Model\ProdutoDao();
 $cDao = new \App\Model\CategoriaDao();
 
 $categorias = $cDao->read();

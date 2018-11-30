@@ -34,7 +34,6 @@ $categorias = $cDao->read();
 	<?php clear_messages(); ?>
 <?php endif; ?>
 
-<hr>
 
 <table class="table table-hover">
 <thead>
@@ -50,9 +49,9 @@ $categorias = $cDao->read();
 	<tr>
 		<td><?php echo $categorias['id']; ?></td>
 		<td><?php echo $categorias['nome']; ?></td>
-		<td class="actions text-right">
-			<a href="editarcategoria.php?id=<?php echo $categoria['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
-			<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-categoria="<?php echo $categoria['id']; ?>">
+		<td class="actions ">
+			<a href="editarcategoria.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="excluicategoria.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
 		</td>

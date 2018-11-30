@@ -34,8 +34,6 @@ $produtos = $pDao->read();
 	<?php clear_messages(); ?>
 <?php endif; ?>
 
-<hr>
-
 <table class="table table-hover">
 <thead>
 	<tr>
@@ -52,9 +50,9 @@ $produtos = $pDao->read();
 		<td><?php echo $produtos['id']; ?></td>
 		<td><?php echo $produtos['nome']; ?></td>
 		<td><?php echo $produtos['id_categoria']; ?></td>
-		<td class="actions text-right">
-			<a href="editarproduto.php?id=<?php echo $produtos['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
-			<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-produtod="<?php echo $produtos['id']; ?>">
+		<td class="actions ">
+			<a href="editarproduto.php?id=<?php echo $produtos['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="excluiproduto.php?id=<?php echo $produtos['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
 		</td>

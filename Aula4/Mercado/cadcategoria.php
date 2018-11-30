@@ -2,8 +2,6 @@
 
 require_once 'vendor/autoload.php';
 
-$cDao = new \App\Model\CategoriaDao();
-$categorias = $cDao->read();
 
 ?>
 <html>
