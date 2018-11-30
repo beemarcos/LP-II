@@ -22,7 +22,7 @@ class CategoriaDao
         $enviar = Conexao::getConexao()->prepare($sql);
         $enviar->execute();
         if ( $enviar->rowCount() >0 ) {
-            $resultado = $enviar->fetchAll(PDO::FETCH_ASSOC);
+            $resultado = $enviar->fetchAll(\PDO::FETCH_ASSOC);
             return $resultado;
         }
         return [];
