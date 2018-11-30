@@ -15,12 +15,12 @@ $categorias = $cDao->read();
 <body>
 <div id="main" class="container-fluid">
     <h3 class="page-header">Nova Categoria</h3>
-    <form action="salvacategoria.php">
+    <form action="salvacategoria.php" method="POST">
     <div class="row">
         
         <div class="form-group col-md-4">
         <label for="campo2">Nome</label>
-        <input type="text" class="form-control" id="campo3">
+        <input type="text" class="form-control" name="nome">
         </div>
         
         </div>

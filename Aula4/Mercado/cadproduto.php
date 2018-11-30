@@ -3,7 +3,10 @@
 require_once 'vendor/autoload.php';
 
 $pDao = new \App\Model\ProdutoDao();
+$cDao = new \App\Model\CategoriaDao();
 
+$categorias = $cDao->read();
+    
 ?>
 <html>
     <head>
@@ -14,21 +17,22 @@ $pDao = new \App\Model\ProdutoDao();
 <body>
 <div id="main" class="container-fluid">
     <h3 class="page-header">Novo Produto</h3>
-    <form action="salvaproduto.php">
+    <form action="salvaproduto.php" method="POST">
     <div class="row">
         
         <div class="form-group col-md-4">
         <label for="campo2">Nome</label>
-        <input type="text" class="form-control" id="campo3">
+        <input type="text" class="form-control" name="nome">
         </div>
 
         <div class="form-group col-md-4">
-        <label for="campo2">Nome</label>
-        <select class="form-control">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
+        <label for="campo2">Categoria</label>
+        <select class="form-control" name="categoria">
+            <?php
+                foreach ($categorias as $categorias) {
+                    echo("<option value=".$categorias['id'].">".$categorias['nome']."</option>");
+                }       
+            ?>
         </select>
         </div>
         
@@ -37,7 +41,7 @@ $pDao = new \App\Model\ProdutoDao();
         <div id="actions" class="row">
         <div class="col-md-12">
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="produto.php" class="btn btn-default">Cancelar</a>
+        <a href="index.php" class="btn btn-default">Cancelar</a>
         </div>
         </div>
     </form> 
