@@ -2,30 +2,69 @@
 
 require_once 'vendor/autoload.php';
 
-
-echo 'iniciando<br/>';
-
-$p = new \App\Model\Produto();
-
-$p->setNome('Chinelo havaiana');
-$p->setId_categoria(1);
-
 $pDao = new \App\Model\ProdutoDao();
-if ($pDao->create($p)) {
-    echo 'Ok';
-} else {
-    echo 'nop';
-}
-/*
-echo 'iniciando<br/>';
-$c = new \App\Model\Categoria();
+$produtos = $pDao->read();
 
-$c->setNome('Frios');
+?>
+<html>
+    <head>
+    <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+<body>
+<header>
+	<div class="row">
+		<div class="col-sm-6">
+			<h2>Produtos</h2>
+		</div>
+		<div class="col-sm-6 text-right h2">
+	    	<a class="btn btn-primary" href="cadproduto.php"><i class="fa fa-plus"></i> Novo Produto</a>
+            <a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
+            <a class="btn btn-default" href="categoria.php"><i class="fa fa-refresh"></i> Categorias</a>
+	    </div>
+	</div>
+</header>
 
-$cDao = new \App\Model\CategoriaDao();
-if ($cDao->create($c)) {
-    echo 'Ok';
-} else {
-    echo 'nop';
-}
-*/
+<?php if (!empty($_SESSION['message'])) : ?>
+	<div class="alert alert-<?php echo $_SESSION['type']; ?> alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<?php echo $_SESSION['message']; ?>
+	</div>
+	<?php clear_messages(); ?>
+<?php endif; ?>
+
+<hr>
+
+<table class="table table-hover">
+<thead>
+	<tr>
+		<th>ID</th>
+		<th width="30%">Nome</th>
+		<th>Categoria</th>
+		<th>Opções</th>
+	</tr>
+</thead>
+<tbody>
+<?php if ($produtos) : ?>
+<?php foreach ($produtos as $produtos) : ?>
+	<tr>
+		<td><?php echo $produtos['id']; ?></td>
+		<td><?php echo $produtos['nome']; ?></td>
+		<td><?php echo $produtos['id_categoria']; ?></td>
+		<td class="actions text-right">
+			<a href="editarproduto.php?id=<?php echo $produtos['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+			<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-produtod="<?php echo $produtos['id']; ?>">
+				<i class="fa fa-trash"></i> Excluir
+			</a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+<?php else : ?>
+	<tr>
+		<td colspan="6">Nenhum registro encontrado.</td>
+	</tr>   
+<?php endif; ?>
+</tbody>
+</table>
+</body>
