@@ -51,7 +51,7 @@ $produtos = $pDao->read();
 		<td><?php echo $produtos['nome']; ?></td>
 		<td><?php echo $produtos['id_categoria']; ?></td>
 		<td class="actions ">
-			<a href="editarproduto.php?id=<?php echo $produtos['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="editarproduto.php?id=<?php echo $produtos['id']; ?>&nome=<?php echo $produtos['nome']; ?>&categoria=<?php echo $produtos['id_categoria']; ?>" class="btn btn-sm btn-warning">Editar</a>
 			<a href="excluiproduto.php?id=<?php echo $produtos['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
 				<i class="fa fa-trash"></i> Excluir
 			</a>

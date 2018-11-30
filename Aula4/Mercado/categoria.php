@@ -50,7 +50,7 @@ $categorias = $cDao->read();
 		<td><?php echo $categorias['id']; ?></td>
 		<td><?php echo $categorias['nome']; ?></td>
 		<td class="actions ">
-			<a href="editarcategoria.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="editarcategoria.php?id=<?php echo $categorias['id']; ?>&nome=<?php echo $categorias['nome']; ?>" class="btn btn-sm btn-warning">Editar</a>
 			<a href="excluicategoria.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
 				<i class="fa fa-trash"></i> Excluir
 			</a>

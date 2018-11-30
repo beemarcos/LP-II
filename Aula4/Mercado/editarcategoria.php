@@ -15,13 +15,18 @@ $c = new \App\Model\Categoria();
     </head>
 <body>
 <div id="main" class="container-fluid">
-    <h3 class="page-header">Nova Categoria</h3>
-    <form action="salvacategoria.php" method="POST">
+    <h3 class="page-header">Atualizando Categoria</h3>
+    <form action="confirmacategoria.php" method="POST">
     <div class="row">
         
         <div class="form-group col-md-4">
+        <label for="campo2">Id</label>
+        <input type="text" class="form-control" name="id" value="<?php echo $_GET['id'] ?>" readonly>
+        </div>    
+
+        <div class="form-group col-md-4">
         <label for="campo2">Nome</label>
-        <input type="text" class="form-control" name="nome">
+        <input type="text" class="form-control" name="nome" value="<?php echo $_GET['nome'] ?>">
         </div>
         
         </div>
