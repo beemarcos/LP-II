@@ -17,8 +17,13 @@ $categorias = $cDao->read();
 <div id="main" class="container-fluid">
     <h3 class="page-header">Atualizando o Produto</h3>
     <form action="confirmaproduto.php" method="POST">
-    <div class="row">
+        <div class="row">
         
+        <div class="form-group col-md-4">
+        <label for="campo2">Id</label>
+        <input readonly type="text" class="form-control" name="id" value="<?php echo $_GET['id'] ?>">
+        </div>
+
         <div class="form-group col-md-4">
         <label for="campo2">Nome</label>
         <input type="text" class="form-control" name="nome" value="<?php echo $_GET['nome'] ?>">
@@ -29,7 +34,12 @@ $categorias = $cDao->read();
         <select class="form-control" name="categoria" >
             <?php
                 foreach ($categorias as $categorias) {
-                    echo("<option value=".$categorias['id'].">".$categorias['nome']."</option>");
+                    
+                    if ( $categorias['id'] == $_GET['categoria'] ){
+                        echo "<option  value=".$categorias['id']." selected='selected' >".$categorias['nome']."</option>";
+                    } else {
+                        echo "<option value=".$categorias['id'].">".$categorias['nome']."</option>";
+                    }
                 }       
             ?>
         </select>
@@ -47,3 +57,4 @@ $categorias = $cDao->read();
 </div>
 
 </body>
+
