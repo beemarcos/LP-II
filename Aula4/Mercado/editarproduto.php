@@ -3,7 +3,6 @@
 require_once 'vendor/autoload.php';
 
 $cDao = new \App\Model\CategoriaDao();
-
 $categorias = $cDao->read();
     
 ?>
@@ -34,7 +33,6 @@ $categorias = $cDao->read();
         <select class="form-control" name="categoria" >
             <?php
                 foreach ($categorias as $categorias) {
-                    
                     if ( $categorias['id'] == $_GET['categoria'] ){
                         echo "<option  value=".$categorias['id']." selected='selected' >".$categorias['nome']."</option>";
                     } else {
@@ -44,7 +42,6 @@ $categorias = $cDao->read();
             ?>
         </select>
         </div>
-        
         </div>
         <hr />
         <div id="actions" class="row">
@@ -55,6 +52,5 @@ $categorias = $cDao->read();
         </div>
     </form> 
 </div>
-
 </body>
 

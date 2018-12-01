@@ -5,6 +5,10 @@ require_once 'vendor/autoload.php';
 $pDao = new \App\Model\ProdutoDao();
 $produtos = $pDao->read();
 
+$cDao = new \App\Model\CategoriaDao();
+$categorias = $cDao->read();
+
+
 ?>
 <html>
     <head>
@@ -45,14 +49,22 @@ $produtos = $pDao->read();
 </thead>
 <tbody>
 <?php if ($produtos) : ?>
-<?php foreach ($produtos as $produtos) : ?>
+<?php foreach ($produtos as $prod) : ?>
 	<tr>
-		<td><?php echo $produtos['id']; ?></td>
-		<td><?php echo $produtos['nome']; ?></td>
-		<td><?php echo $produtos['id_categoria']; ?></td>
+		<td><?php echo $prod['id']; ?></td>
+		<td><?php echo $prod['nome']; ?></td>
+		<td>
+			<?php
+			foreach ($categorias as $cat) {
+				if ( $prod['id_categoria']==$cat['id'] ) {
+					echo $cat['nome'];
+				}
+			}
+			?>
+		</td>
 		<td class="actions ">
-			<a href="editarproduto.php?id=<?php echo $produtos['id']; ?>&nome=<?php echo $produtos['nome']; ?>&categoria=<?php echo $produtos['id_categoria']; ?>" class="btn btn-sm btn-warning">Editar</a>
-			<a href="excluiproduto.php?id=<?php echo $produtos['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
+			<a href="editarproduto.php?id=<?php echo $prod['id']; ?>&nome=<?php echo $prod['nome']; ?>&categoria=<?php echo $prod['id_categoria']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="excluiproduto.php?id=<?php echo $prod['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
 		</td>

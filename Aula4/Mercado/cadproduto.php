@@ -3,7 +3,6 @@
 require_once 'vendor/autoload.php';
 
 $cDao = new \App\Model\CategoriaDao();
-
 $categorias = $cDao->read();
     
 ?>
@@ -45,5 +44,4 @@ $categorias = $cDao->read();
         </div>
     </form> 
 </div>
-
 </body>
