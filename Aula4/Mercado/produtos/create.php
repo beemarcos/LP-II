@@ -1,6 +1,6 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 $p = new \App\Model\Produto();
 $p->setNome($_POST['nome']);

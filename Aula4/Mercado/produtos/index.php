@@ -1,6 +1,6 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 $pDao = new \App\Model\ProdutoDao();
 $produtos = $pDao->read();
@@ -12,8 +12,8 @@ $categorias = $cDao->read();
 ?>
 <html>
     <head>
-    <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 <body>
@@ -64,7 +64,7 @@ $categorias = $cDao->read();
 		</td>
 		<td class="actions ">
 			<a href="editarproduto.php?id=<?php echo $prod['id']; ?>&nome=<?php echo $prod['nome']; ?>&categoria=<?php echo $prod['id_categoria']; ?>" class="btn btn-sm btn-warning">Editar</a>
-			<a href="excluiproduto.php?id=<?php echo $prod['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
+			<a href="excluiproduto.php?id=<?php echo $prod['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir esse produto?')">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
 		</td>

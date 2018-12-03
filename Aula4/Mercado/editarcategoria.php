@@ -18,11 +18,8 @@ $c = new \App\Model\Categoria();
     <form action="confirmacategoria.php" method="POST">
     <div class="row">
         
-        <div class="form-group col-md-4">
-        <label for="campo2">Id</label>
-        <input type="text" class="form-control" name="id" value="<?php echo $_GET['id'] ?>" readonly>
-        </div>    
-
+        <input type="hidden" class="form-control" name="id" value="<?php echo $_GET['id'] ?>" readonly>
+        
         <div class="form-group col-md-4">
         <label for="campo2">Nome</label>
         <input type="text" class="form-control" name="nome" value="<?php echo $_GET['nome'] ?>">
