@@ -1,6 +1,6 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 $cDao = new \App\Model\CategoriaDao();
 $categorias = $cDao->read();
@@ -8,8 +8,8 @@ $categorias = $cDao->read();
 ?>
 <html>
     <head>
-    <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 <body>
@@ -19,9 +19,9 @@ $categorias = $cDao->read();
 			<h2>Categorias</h2>
 		</div>
 		<div class="col-sm-6 text-right h2">
-	    	<a class="btn btn-primary" href="cadcategoria.php"><i class="fa fa-plus"></i> Nova Categoria</a>
-            <a class="btn btn-default" href="categoria.php"><i class="fa fa-refresh"></i> Atualizar</a>
-            <a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Produtos</a>
+	    	<a class="btn btn-primary" href="/categorias/new.php"><i class="fa fa-plus"></i> Nova Categoria</a>
+            <a class="btn btn-default" href="/categorias/index.php"><i class="fa fa-refresh"></i> Atualizar</a>
+            <a class="btn btn-default" href="/produtos/index.php"><i class="fa fa-refresh"></i> Produtos</a>
 	    </div>
 	</div>
 </header>
@@ -50,8 +50,8 @@ $categorias = $cDao->read();
 		<td><?php echo $categorias['id']; ?></td>
 		<td><?php echo $categorias['nome']; ?></td>
 		<td class="actions ">
-			<a href="editarcategoria.php?id=<?php echo $categorias['id']; ?>&nome=<?php echo $categorias['nome']; ?>" class="btn btn-sm btn-warning">Editar</a>
-			<a href="excluicategoria.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal">
+			<a href="/categorias/edit.php?id=<?php echo $categorias['id']; ?>&nome=<?php echo $categorias['nome']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="/categorias/delete.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" onclick="return confirm('Deseja realmente excluir essa categoria?')">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
 		</td>

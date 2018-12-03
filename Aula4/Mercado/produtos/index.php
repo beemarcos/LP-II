@@ -23,9 +23,9 @@ $categorias = $cDao->read();
 			<h2>Produtos</h2>
 		</div>
 		<div class="col-sm-6 text-right h2">
-	    	<a class="btn btn-primary" href="cadproduto.php"><i class="fa fa-plus"></i> Novo Produto</a>
-            <a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
-            <a class="btn btn-default" href="categoria.php"><i class="fa fa-refresh"></i> Categorias</a>
+	    	<a class="btn btn-primary" href="/produtos/new.php"><i class="fa fa-plus"></i> Novo Produto</a>
+            <a class="btn btn-default" href="/produtos/index.php"><i class="fa fa-refresh"></i> Atualizar</a>
+            <a class="btn btn-default" href="/categorias/index.php"><i class="fa fa-refresh"></i> Categorias</a>
 	    </div>
 	</div>
 </header>
@@ -63,8 +63,8 @@ $categorias = $cDao->read();
 			?>
 		</td>
 		<td class="actions ">
-			<a href="editarproduto.php?id=<?php echo $prod['id']; ?>&nome=<?php echo $prod['nome']; ?>&categoria=<?php echo $prod['id_categoria']; ?>" class="btn btn-sm btn-warning">Editar</a>
-			<a href="excluiproduto.php?id=<?php echo $prod['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir esse produto?')">
+			<a href="edit.php?id=<?php echo $prod['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="delete.php?id=<?php echo $prod['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir esse produto?')">
 				<i class="fa fa-trash"></i> Excluir
 			</a>
 		</td>
