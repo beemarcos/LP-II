@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
 {
-    protected $fillable = ['nome'];
+    protected $fillable = [
+        'nome'
+    ];
+
+    public function produtos()
+    {
+        return $this->hasMany('App\Produto');
+    }
+
 }

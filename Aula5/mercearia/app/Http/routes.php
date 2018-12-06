@@ -17,13 +17,7 @@ Route::get('/', function () {
 
 });
 
-
-// Route::resource('categoria','CategoriaController');
-// Route::resource('produto','ProdutoController');
-
 Route::auth();
-
-
 
 Route::group(['middleware' => 'auth'], function()
 {
