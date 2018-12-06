@@ -3,7 +3,7 @@
   <div class="row">
   <div class="col-sm-12">
     <div class="full-right">
-      <h2>CRUD Products</h2>
+      <h2>CRUD Produto</h2>
     </div>
   </div>
   </div>
@@ -26,7 +26,7 @@
       </th>
     </tr>
     <?php $no=1; ?>
-    @foreach ($product as $key => $value)
+    @foreach ($roduct as $key => $value)
       <tr>
         <td>{{$no++}}</td>
         <td>{{ $value->name }}</td>
@@ -44,5 +44,3 @@
     @endforeach
   </table>
 @endsection
-
-
