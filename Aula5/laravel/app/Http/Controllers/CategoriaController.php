@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
 use Illuminate\Http\Request;
+use App\Categoria;
 
-class TaskController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        return view('tasks',['tasks'=>$tasks]);
+        $categorias = Categoria::all();
+        return view('categorias.index',['categorias'=>$categorias]);      
     }
 
     /**
@@ -25,7 +25,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
