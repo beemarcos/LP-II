@@ -18,9 +18,16 @@ Route::get('/', function () {
 });
 
 
-Route::resource('categoria','CategoriaController');
-Route::resource('produto','ProdutoController');
+// Route::resource('categoria','CategoriaController');
+// Route::resource('produto','ProdutoController');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+
+
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::resource('categoria','CategoriaController');
+    Route::resource('produto','ProdutoController');
+
+});

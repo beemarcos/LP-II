@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                {{ link_to_route('categoria.create','Criar Nova Categoria',null,['class'=>'btn btn-success']) }}
+                {{ link_to_route('categoria.create','Nova Categoria',null,['class'=>'btn btn-success']) }}
 
             </div>
         </div>
