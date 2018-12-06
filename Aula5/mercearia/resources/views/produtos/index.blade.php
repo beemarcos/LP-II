@@ -33,7 +33,7 @@
                                     @endforeach
                                     <td>
                                         {!! Form::open(array('route'=>['produto.destroy',$produto->id],'method'=>'DELETE')) !!}
-                                            {{ link_to_route('produto.edit','Edit',[$produto->id],['class'=>'btn btn-primary']) }}
+                                            {{ link_to_route('produto.edit','Editar',[$produto->id],['class'=>'btn btn-primary']) }}
                                             |
 
                                             {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}

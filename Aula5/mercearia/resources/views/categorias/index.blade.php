@@ -26,10 +26,9 @@
                                         {!! Form::open(array('route'=>['categoria.destroy',$categoria->id],'method'=>'DELETE')) !!}
                                             {{ link_to_route('categoria.edit','Editar',[$categoria->id],['class'=>'btn btn-primary']) }}
                                             |
-
                                             {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
                                         {!! Form::close() !!}
-
+                                        
 
                                     </td>
                                 </tr>

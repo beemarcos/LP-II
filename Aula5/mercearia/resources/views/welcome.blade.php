@@ -8,7 +8,21 @@
                 <div class="panel-heading">Página inicial</div>
 
                 <div class="panel-body">
-                    MERCEARIA's Landing Page.
+                    <img
+                        width="33%" 
+                        height="33%" 
+                        src="/img/market.png"
+                    >
+                    <img
+                        width="33%" 
+                        height="33%" 
+                        src="/img/market.png"
+                    >
+                    <img
+                        width="33%" 
+                        height="33%" 
+                        src="/img/market.png"
+                    >
                 </div>
             </div>
         </div>

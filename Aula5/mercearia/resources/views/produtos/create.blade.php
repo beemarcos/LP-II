@@ -17,7 +17,7 @@
 
                             <div class="form-group">
                                 <label for="">Categoria</label>
-                                <select class="form-control" name="id_categoria" id="categorias">
+                                <select class="form-control" name="id_categoria" id="id_categoria">
                                   <option value="0" disable="true" selected="true">=== Selecione a Categoria ===</option>
                                     @foreach ($categorias as $key => $value)
                                       <option value="{{$value->id}}">{{ $value->nome }}</option>

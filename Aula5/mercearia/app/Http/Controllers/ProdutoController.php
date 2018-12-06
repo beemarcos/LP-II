@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Produto;
 use App\Categoria;
-use Illuminate\Http\Request;
+
+
+
+use App\Http\Requests;
+use App\Http\Requests\ProdutoRequest;
+
 use Illuminate\Support\Facades\Input;
 
 
-use App\Http\Requests\ProdutoRequest;
 
 class ProdutoController extends Controller
 {
