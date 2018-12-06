@@ -3,7 +3,7 @@
 
 <div class="container">
     <h1>Novo Produto</h1>
-    {!! Form::open() !!}
+    {!! Form::open(['url'=>'produtos/store']) !!}
 
         <!-- Nome Form Input -->
         <div class="form-group">

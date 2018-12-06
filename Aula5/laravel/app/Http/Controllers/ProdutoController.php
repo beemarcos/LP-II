@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Produto;
+use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
@@ -36,7 +37,9 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Produto::create($input);
+        return redirect('produtos');
     }
 
     /**
