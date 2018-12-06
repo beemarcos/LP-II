@@ -16,8 +16,20 @@
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('id_categoria','Categoria') !!}
-                                {!! Form::number('id_categoria',null,['class'=>'form-control']) !!}
+                                <label for="">Categoria</label>
+                                <select class="form-control" name="id_categoria" id="categorias">
+                                  <option value="0" disable="true" selected="true">=== Selecione a Categoria ===</option>
+                                    @foreach ($categorias as $key => $value)
+                                        
+                                        @if ($value->id == $produto->id_categoria)
+                                            <option selected value="{{$value->id}}">{{ $value->nome }}</option>
+                                        @else
+                                            <option value="{{$value->id}}">{{ $value->nome }}</option>
+                                        @endif
+                                        
+                                    @endforeach
+                                    
+                                </select>
                             </div>
 
                             <div class="form-group">

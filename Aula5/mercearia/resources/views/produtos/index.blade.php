@@ -23,7 +23,14 @@
                             @foreach($produtos as $produto)
                                 <tr>
                                     <td>{{ link_to_route('produto.show',$produto->nome,[$produto->id]) }}</td>
-                                    <td>{{ link_to_route('produto.show',$produto->id_categoria,[$produto->id]) }}</td>
+                                    {{--  <td>{{ $produto->id_categoria }}</td>  --}}
+                                    @foreach ($categorias as $categoria)
+                                        
+                                        @if ( $produto->id_categoria == $categoria->id )
+                                            <td>{{ $categoria->nome }}</td>
+                                        @endif
+                                        
+                                    @endforeach
                                     <td>
                                         {!! Form::open(array('route'=>['produto.destroy',$produto->id],'method'=>'DELETE')) !!}
                                             {{ link_to_route('produto.edit','Edit',[$produto->id],['class'=>'btn btn-primary']) }}

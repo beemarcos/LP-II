@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Produto;
+use App\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 use App\Http\Requests\ProdutoRequest;
 
@@ -17,7 +20,8 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::all();
-        return view('produtos.index',compact('produtos'));
+        $categorias = Categoria::all();
+        return view('produtos.index',compact('produtos','categorias'));
     }
 
     /**
@@ -27,7 +31,10 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produtos.create');
+        
+        $categorias = Categoria::all();
+        return view('produtos.create',compact('categorias'));
+
     }
 
     /**
@@ -50,7 +57,8 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        return view('produtos.show',compact('produto'));
+        $categorias = Categoria::all();
+        return view('produtos.show',compact('produto','categorias'));
     }
 
     /**
@@ -61,7 +69,8 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        return view('produtos.edit',compact('produto'));
+        $categorias = Categoria::all();
+        return view('produtos.edit',compact('produto','categorias'));
     }
 
     /**

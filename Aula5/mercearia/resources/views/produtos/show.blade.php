@@ -10,9 +10,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ $produto->nome }}</div>
 
-                    <div class="panel-body">
-
-                        {{ $produto->id_categoria }}
+                    <div class="panel-heading">
+                        <label>Categoria: </label>
+                        @foreach ($categorias as $key => $value)
+                                        
+                            @if ($value->id == $produto->id_categoria)
+                                {{ $value->nome }}
+                            @endif
+                                        
+                        @endforeach
 
                     </div>
                 </div>
