@@ -23,9 +23,10 @@ $categorias = $cDao->read();
 			<h2>Produtos</h2>
 		</div>
 		<div class="col-sm-6 text-right h2">
+            <a class="btn btn-default" href="/produtos/index.php"><i class="fa fa-refresh"></i> Produtos</a>
+			<a class="btn btn-default" href="/categorias/index.php"><i class="fa fa-refresh"></i> Categorias</a>
+			
 	    	<a class="btn btn-primary" href="/produtos/new.php"><i class="fa fa-plus"></i> Novo Produto</a>
-            <a class="btn btn-default" href="/produtos/index.php"><i class="fa fa-refresh"></i> Atualizar</a>
-            <a class="btn btn-default" href="/categorias/index.php"><i class="fa fa-refresh"></i> Categorias</a>
 	    </div>
 	</div>
 </header>
@@ -41,7 +42,6 @@ $categorias = $cDao->read();
 <table class="table table-hover">
 <thead>
 	<tr>
-		<th>ID</th>
 		<th width="30%">Nome</th>
 		<th>Categoria</th>
 		<th>Opções</th>
@@ -51,7 +51,6 @@ $categorias = $cDao->read();
 <?php if ($produtos) : ?>
 <?php foreach ($produtos as $prod) : ?>
 	<tr>
-		<td><?php echo $prod['id']; ?></td>
 		<td><?php echo $prod['nome']; ?></td>
 		<td>
 			<?php

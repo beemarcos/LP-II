@@ -19,9 +19,9 @@ $categorias = $cDao->read();
 			<h2>Categorias</h2>
 		</div>
 		<div class="col-sm-6 text-right h2">
-	    	<a class="btn btn-primary" href="/categorias/new.php"><i class="fa fa-plus"></i> Nova Categoria</a>
-            <a class="btn btn-default" href="/categorias/index.php"><i class="fa fa-refresh"></i> Atualizar</a>
             <a class="btn btn-default" href="/produtos/index.php"><i class="fa fa-refresh"></i> Produtos</a>
+			<a class="btn btn-default" href="/categorias/index.php"><i class="fa fa-refresh"></i> Categorias</a>
+	    	<a class="btn btn-primary" href="/produtos/new.php"><i class="fa fa-plus"></i> Novo Produto</a>
 	    </div>
 	</div>
 </header>

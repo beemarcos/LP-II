@@ -2,11 +2,18 @@
 
 require_once '../vendor/autoload.php';
 
+$cDao = new \App\Model\CategoriaDao();
+$categorias = $cDao->read();
+
+
 $pDao = new \App\Model\ProdutoDao();
 $produtos = $pDao->read();
 
-$cDao = new \App\Model\CategoriaDao();
-$categorias = $cDao->read();
+foreach ($produtos as $produto) {
+    if( $produto['id'] == $_GET['id']) {
+        $prod = $produto;
+    }
+}
     
 ?>
 <html>
@@ -21,25 +28,23 @@ $categorias = $cDao->read();
     <form action="/produtos/confirmaproduto.php" method="POST">
         <div class="row">
         
-        <div class="form-group col-md-4">
-        <label for="campo2">Id</label>
-        <input readonly type="text" class="form-control" name="id" value="<?php echo $_GET['id'] ?>">
-        </div>
+        <!-- Somente para enviar o id -->
+        <input hidden type="text" class="form-control" name="id" value="<?php echo $_GET['id'] ?>">
 
         <div class="form-group col-md-4">
         <label for="campo2">Nome</label>
-        <input type="text" class="form-control" name="nome" value="<?php echo $_GET['nome'] ?>">
+        <input type="text" class="form-control" name="nome" value="<?php echo $prod['nome'] ?>">
         </div>
 
         <div class="form-group col-md-4">
         <label for="campo2">Categoria</label>
         <select class="form-control" name="categoria" >
             <?php
-                foreach ($categorias as $categorias) {
-                    if ( $categorias['id'] == $_GET['categoria'] ){
-                        echo "<option  value=".$categorias['id']." selected='selected' >".$categorias['nome']."</option>";
+                foreach ($categorias as $categoria) {
+                    if ( $categoria['id'] == $prod['id_categoria'] ){
+                        echo "<option  value=".$categoria['id']." selected='selected' >".$categoria['nome']."</option>";
                     } else {
-                        echo "<option value=".$categorias['id'].">".$categorias['nome']."</option>";
+                        echo "<option value=".$categoria['id'].">".$categoria['nome']."</option>";
                     }
                 }       
             ?>
