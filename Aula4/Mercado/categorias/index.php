@@ -38,7 +38,6 @@ $categorias = $cDao->read();
 <table class="table table-hover">
 <thead>
 	<tr>
-		<th>ID</th>
 		<th width="30%">Nome</th>
 		<th>Opções</th>
 	</tr>
@@ -47,10 +46,9 @@ $categorias = $cDao->read();
 <?php if ($categorias) : ?>
 <?php foreach ($categorias as $categorias) : ?>
 	<tr>
-		<td><?php echo $categorias['id']; ?></td>
 		<td><?php echo $categorias['nome']; ?></td>
 		<td class="actions ">
-			<a href="/categorias/edit.php?id=<?php echo $categorias['id']; ?>&nome=<?php echo $categorias['nome']; ?>" class="btn btn-sm btn-warning">Editar</a>
+			<a href="/categorias/edit.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
 			<a href="/categorias/delete.php?id=<?php echo $categorias['id']; ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" onclick="return confirm('Deseja realmente excluir essa categoria?')">
 				<i class="fa fa-trash"></i> Excluir
 			</a>

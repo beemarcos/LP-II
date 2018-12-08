@@ -5,6 +5,14 @@ require_once '../vendor/autoload.php';
 $cDao = new \App\Model\CategoriaDao();
 $c = new \App\Model\Categoria();
 
+$categorias = $cDao->read();
+
+foreach ($categorias as $categoria) {
+    if( $categoria['id'] == $_GET['id']) {
+        $nome = $categoria['nome'];
+    }
+}
+
 ?>
 <html>
     <head>
@@ -17,12 +25,16 @@ $c = new \App\Model\Categoria();
     <h3 class="page-header">Atualizando Categoria</h3>
     <form action="confirmacategoria.php" method="POST">
     <div class="row">
+                
         
-        <input type="hidden" class="form-control" name="id" value="<?php echo $_GET['id'] ?>" readonly>
+        
+        <!-- Apenas para enviar o id -->
+        <input hidden type="text" class="form-control" name="id" value="<?php echo $_GET['id'] ?>">
+        
         
         <div class="form-group col-md-4">
         <label for="campo2">Nome</label>
-        <input type="text" class="form-control" name="nome" value="<?php echo $_GET['nome'] ?>">
+        <input type="text" class="form-control" name="nome" value="<?php echo $nome ?>">
         </div>
         
         </div>

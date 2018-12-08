@@ -2,6 +2,9 @@
 
 require_once '../vendor/autoload.php';
 
+$pDao = new \App\Model\ProdutoDao();
+$produtos = $pDao->read();
+
 $cDao = new \App\Model\CategoriaDao();
 $categorias = $cDao->read();
     
