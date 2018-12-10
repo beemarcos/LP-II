@@ -38,7 +38,7 @@
                                 </div>    
                                 <div class="col-sm-8">
                                     <select class="form-control" name="id_categoria" id="id_categoria">
-                                    <option value="0" disable="true" selected="true">=== Selecione a Categoria ===</option>
+                                    <option>=== Selecione a Categoria ===</option>
                                         @foreach ($categorias as $key => $value)
                                             <option value="{{$value->id}}">{{ $value->nome }}</option>
                                         @endforeach

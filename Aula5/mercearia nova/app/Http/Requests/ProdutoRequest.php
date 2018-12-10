@@ -23,9 +23,10 @@ class ProdutoRequest extends Request
      */
     public function rules()
     {
+
         return [
             'nome' => 'required',
-            'id_categoria' => 'required',
+            'categoria' => 'required',
             'preco' => 'required',
             'saldo' => 'required',
             'custo' => 'required',
