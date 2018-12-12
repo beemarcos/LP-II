@@ -47,8 +47,10 @@
 
                     </div>
                 </div>
-
-                {{ link_to_route('produto.create','Novo Produto',null,['class'=>'btn btn-success']) }}
+                @permission('create-produtos')
+                    {{ link_to_route('produto.create','Novo Produto',null,['class'=>'btn btn-success']) }}
+                @endpermission
+                
 
             </div>
         </div>
