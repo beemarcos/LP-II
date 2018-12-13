@@ -1,6 +1,6 @@
 @extends(Config::get('entrust-gui.layout'))
 
-@section('heading', 'Edit User')
+@section('heading', 'Editar Usuario')
 
 @section('content')
 <form action="{{ route('entrust-gui::users.update', $user->id) }}" method="post" role="form">

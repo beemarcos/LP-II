@@ -1,6 +1,6 @@
 @extends(Config::get('entrust-gui.layout'))
 
-@section('heading', 'Create Role')
+@section('heading', 'Criar Regra')
 
 @section('content')
 <form action="{{ route('entrust-gui::roles.store') }}" method="post" role="form">

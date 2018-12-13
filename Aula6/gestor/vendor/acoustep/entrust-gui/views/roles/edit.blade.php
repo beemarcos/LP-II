@@ -1,6 +1,6 @@
 @extends(Config::get('entrust-gui.layout'))
 
-@section('heading', 'Edit Role')
+@section('heading', 'Editar Regra')
 
 @section('content')
 <form action="{{ route('entrust-gui::roles.update', $model->id) }}" method="post" role="form">
