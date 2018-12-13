@@ -20,6 +20,7 @@
                                 <th>Categoria</th>
                                 <th>Ação</th>
                             </tr>
+
                             @foreach($produtos as $produto)
                                 <tr>
                                     <td>{{ link_to_route('produto.show',$produto->nome,[$produto->id]) }}</td>
@@ -33,10 +34,13 @@
                                     @endforeach
                                     <td>
                                         {!! Form::open(array('route'=>['produto.destroy',$produto->id],'method'=>'DELETE')) !!}
+                                        @permission('edit-produto')
                                             {{ link_to_route('produto.edit','Editar',[$produto->id],['class'=>'btn btn-primary']) }}
-                                            |
-
-                                            {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
+                                        @endpermission
+                                        |
+                                        @permission('delete-produto')
+                                        {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
+                                        @endpermission
                                         {!! Form::close() !!}
 
 
@@ -47,7 +51,7 @@
 
                     </div>
                 </div>
-                @permission('create-produtos')
+                @permission('create-produto')
                     {{ link_to_route('produto.create','Novo Produto',null,['class'=>'btn btn-success']) }}
                 @endpermission
                 
