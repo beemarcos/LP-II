@@ -1,6 +1,6 @@
 @extends(Config::get('entrust-gui.layout'))
 
-@section('heading', 'Users')
+@section('heading', 'Usuarios')
 
 @section('content')
 <div class="models--actions">
@@ -9,7 +9,7 @@
 <table class="table table-striped">
   <tr>
     <th>Email</th>
-    <th>Actions</th>
+    <th>Ações</th>
   </tr>
   @foreach($users as $user)
     <tr>

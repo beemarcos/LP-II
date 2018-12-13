@@ -1,5 +1,5 @@
 <?php return [
-    'created' => 'You have successfully created a new role.',
-    'destroyed' => 'You have successfully removed a role.',
-    'updated' => 'You have successfully updated a role.',
+    'created' => 'Você teve sucesso ao criar uma nova regra.',
+    'destroyed' => 'Você teve sucesso ao remover a regra.',
+    'updated' => 'Você teve sucesso ao atualizar a regra.',
 ];

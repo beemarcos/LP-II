@@ -55,6 +55,13 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/categoria') }}">Categorias</a></li>
                     </ul>
+
+                    @role('admin')
+                        <ul class="nav navbar-nav" >
+                            <li><a style="background-color:#808080 ; color:white" href="{{ url('/entrust-gui/users') }}">ADMINISTRADOR</a></li>
+                        </ul>
+                    @endrole
+
                 @endif
 
                 <!-- Right Side Of Navbar -->

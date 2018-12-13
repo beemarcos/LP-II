@@ -1,5 +1,5 @@
 <?php return [
-    'created' => 'You have successfully created a new permission.',
-    'destroyed' => 'You have successfully removed a permission.',
-    'updated' => 'You have successfully updated a permission.',
+    'created' => 'Você teve sucesso ao criar uma nova permissão.',
+    'destroyed' => 'Você teve sucesso ao remover a permissão.',
+    'updated' => 'Você teve sucesso ao atualizar a permissão.',
 ];
