@@ -16,7 +16,7 @@
                             </div>
 
                             <div class="form-group">
-                                {!! Form::button('Salvar',['type'=>'submit','class'=>'btn btn-primary']) !!}
+                                {!! Form::button('Salvar',['type'=>'submit','class'=>'btn btn-success']) !!}
                                 {{ link_to_route('categoria.index','Voltar',null,['class'=>'btn btn-primary']) }}
                             </div>
                         {!! Form::close() !!}
