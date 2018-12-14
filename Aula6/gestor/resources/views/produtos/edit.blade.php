@@ -73,7 +73,9 @@
                         </div>
                         
                         <div class="form-group">
-                            {!! Form::button('Update',['type'=>'submit','class'=>'btn btn-primary']) !!}
+                            {!! Form::button('Salvar',['type'=>'submit','class'=>'btn btn-success']) !!}
+
+                            {{ link_to_route('produto.index','Voltar',null,['class'=>'btn btn-primary']) }}
                         </div>
                         {!! Form::close() !!}
 

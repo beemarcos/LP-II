@@ -21,15 +21,22 @@
                             </tr>
                             @foreach($categorias as $categoria)
                                 <tr>
+                                    @if ( Entrust::can('show-categoria') )
                                     <td>{{ link_to_route('categoria.show',$categoria->nome,[$categoria->id]) }}</td>
+                                    @else
+                                        <td>{{ $categoria->nome }}</td>
+                                    @endif
+                                    
                                     <td>
                                         {!! Form::open(array('route'=>['categoria.destroy',$categoria->id],'method'=>'DELETE')) !!}
+                                        @permission('edit-categoria')
                                             {{ link_to_route('categoria.edit','Editar',[$categoria->id],['class'=>'btn btn-primary']) }}
-                                            |
-                                            {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
-                                        {!! Form::close() !!}
-                                        
+                                        @endpermission
 
+                                        @permission('delete-categoria')
+                                            {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
+                                        @endpermission
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                             @endforeach
@@ -37,9 +44,10 @@
 
                     </div>
                 </div>
-
+                @permission('create-categoria')
                 {{ link_to_route('categoria.create','Nova Categoria',null,['class'=>'btn btn-success']) }}
-
+                @endpermission
+                <a class="btn btn-primary" href="/">Página inicial</a>
             </div>
         </div>
     </div>

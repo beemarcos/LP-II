@@ -9,7 +9,7 @@
                     <div class="panel-heading">{{ $categoria->nome }}</div>
                     
                 </div>
-
+                {{ link_to_route('categoria.index','Voltar',null,['class'=>'btn btn-primary']) }}
             </div>
         </div>
     </div>

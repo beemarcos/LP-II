@@ -46,6 +46,7 @@
                         {{ $produto->icms }}
                     </div>
                 </div>
+                {{ link_to_route('produto.index','Voltar',null,['class'=>'btn btn-primary']) }}
             </div>
         </div>
     </div>

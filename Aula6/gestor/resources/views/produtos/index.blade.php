@@ -17,14 +17,23 @@
                         <table class="table">
                             <tr>
                                 <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Saldo</th>
                                 <th>Categoria</th>
                                 <th>Ação</th>
                             </tr>
 
                             @foreach($produtos as $produto)
                                 <tr>
-                                    <td>{{ link_to_route('produto.show',$produto->nome,[$produto->id]) }}</td>
-                                    {{--  <td>{{ $produto->id_categoria }}</td>  --}}
+                                    @if ( Entrust::can('show-produto') )
+                                        <td>{{ link_to_route('produto.show',$produto->nome,[$produto->id]) }}</td>
+                                    @else
+                                        <td>{{ $produto->nome }}</td>
+                                    @endif
+                                    
+                                    <td>R${{ $produto->preco }}</td>
+                                    <td>{{ $produto->saldo }}</td>
+
                                     @foreach ($categorias as $categoria)
                                         
                                         @if ( $produto->id_categoria == $categoria->id )
@@ -37,7 +46,7 @@
                                         @permission('edit-produto')
                                             {{ link_to_route('produto.edit','Editar',[$produto->id],['class'=>'btn btn-primary']) }}
                                         @endpermission
-                                        |
+
                                         @permission('delete-produto')
                                         {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
                                         @endpermission
@@ -53,9 +62,8 @@
                 </div>
                 @permission('create-produto')
                     {{ link_to_route('produto.create','Novo Produto',null,['class'=>'btn btn-success']) }}
-                @endpermission
-                
-
+                @endpermission 
+                <a class="btn btn-primary" href="/">Página inicial</a>
             </div>
         </div>
     </div>
