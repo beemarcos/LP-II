@@ -52,7 +52,15 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'nome' => 'required|unique:produtos|min:3',
+            'preco' => 'required',
+            'icms' => 'required',
+            'id_categoria' => 'required',
+            'saldo' => 'required',
+            'custo' => 'required',
+            'perecivel' => 'required'
+        ]);
         Produto::create($request->all());
         return redirect()->route('produto.index')->with('message','Ítem foi registrado com sucesso');
     }
