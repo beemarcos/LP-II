@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 
-use App\Http\Requests;
-use App\Http\Requests\CategoriaRequest;
+use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
@@ -36,8 +35,12 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoriaRequest $request)
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'nome' => 'required'
+        ]);
+
         Categoria::create($request->all());
         return redirect()->route('categoria.index')->with('message','Ítem foi adicionado com sucesso');
     }
@@ -71,7 +74,7 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoriaRequest $request, Categoria $categoria)
+    public function update(Request $request, Categoria $categoria)
     {
         $categoria->update($request->all());
         return redirect()->route('categoria.index')->with('message','Ítem foi atualizado com sucesso');

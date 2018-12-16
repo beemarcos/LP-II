@@ -7,8 +7,7 @@ use App\Categoria;
 
 
 
-use App\Http\Requests;
-use App\Http\Requests\ProdutoRequest;
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;
 
@@ -16,6 +15,10 @@ use Illuminate\Support\Facades\Input;
 
 class ProdutoController extends Controller
 {
+    
+    
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -47,8 +50,9 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProdutoRequest $request)
+    public function store(Request $request)
     {
+        
         Produto::create($request->all());
         return redirect()->route('produto.index')->with('message','Ítem foi registrado com sucesso');
     }
@@ -84,7 +88,7 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProdutoRequest $request, Produto $produto)
+    public function update(Request $request, Produto $produto)
     {
         $produto->update($request->all());
         return redirect()->route('produto.index')->with('message','Ítem foi atualizado com sucesso');
