@@ -48,7 +48,7 @@
                                         @endpermission
 
                                         @permission('delete-produto')
-                                        {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit', 'name' => 'delete_modal']) !!}
+                                        {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
                                         @endpermission
                                         {!! Form::close() !!}
 
