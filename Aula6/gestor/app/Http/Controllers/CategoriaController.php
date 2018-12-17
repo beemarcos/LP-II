@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categoria;
 
 use Illuminate\Http\Request;
+use Entrust;
 
 class CategoriaController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::all();
-        return view('categorias.index',compact('categorias'));
+        return view ('categorias.index',compact('categorias'));
     }
 
     /**
@@ -26,7 +27,12 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('categorias.create');
+        if ( Entrust::can('create-categoria') ) {
+            return view('categorias.create');
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
+        
     }
 
     /**
@@ -37,12 +43,12 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nome' => 'required|unique:categorias'
+        $this -> validate($request, [
+            'nome' => 'required|unique:categorias|min:3'
         ]);
 
-        Categoria::create($request->all());
-        return redirect()->route('categoria.index')->with('message','Ítem foi adicionado com sucesso');
+        Categoria::create($request -> all());
+        return redirect() -> route('categoria.index')->with('message','Ítem foi adicionado com sucesso');
     }
 
     /**
@@ -53,7 +59,12 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        return view('categorias.show',compact('categoria'));
+        if ( Entrust::can('show-categoria') ){
+            return view('categorias.show',compact('categoria'));
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
+        
     }
 
     /**
@@ -64,7 +75,12 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        return view('categorias.edit',compact('categoria'));
+        if ( Entrust::can('edit-categoria') ){
+            return view('categorias.edit',compact('categoria'));
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
+        
     }
 
     /**
@@ -76,8 +92,8 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        $categoria->update($request->all());
-        return redirect()->route('categoria.index')->with('message','Ítem foi atualizado com sucesso');
+        $categoria -> update($request->all());
+        return redirect() -> route('categoria.index') -> with('message','Ítem foi atualizado com sucesso');
     }
 
     /**
@@ -88,7 +104,12 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        $categoria->delete();
-        return redirect()->route('categoria.index')->with('message','Ítem foi deletado com sucesso');
+        if ( Entrust::can('delete-categoria') ) {
+            $categoria->delete();
+            return redirect() -> route('categoria.index') -> with('message','Ítem foi deletado com sucesso');
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
+        
     }
 }

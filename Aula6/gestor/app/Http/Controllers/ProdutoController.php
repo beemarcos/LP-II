@@ -5,12 +5,9 @@ namespace App\Http\Controllers;
 use App\Produto;
 use App\Categoria;
 
-
-
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Input;
-
+use Entrust;
 
 
 class ProdutoController extends Controller
@@ -38,10 +35,12 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        
-        $categorias = Categoria::all();
-        return view('produtos.create',compact('categorias'));
-
+        if ( Entrust::can('create-produto') ){
+            $categorias = Categoria::all();
+            return view('produtos.create',compact('categorias'));
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
     }
 
     /**
@@ -62,7 +61,7 @@ class ProdutoController extends Controller
             'perecivel' => 'required'
         ]);
         Produto::create($request->all());
-        return redirect()->route('produto.index')->with('message','Ítem foi registrado com sucesso');
+        return redirect() -> route('produto.index') -> with('message','Ítem foi registrado com sucesso');
     }
 
     /**
@@ -73,8 +72,12 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        $categorias = Categoria::all();
-        return view('produtos.show',compact('produto','categorias'));
+        if ( Entrust::can('show-produto') ) {
+            $categorias = Categoria::all();
+            return view('produtos.show',compact('produto','categorias'));
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
     }
 
     /**
@@ -85,8 +88,13 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        $categorias = Categoria::all();
-        return view('produtos.edit',compact('produto','categorias'));
+        if ( Entrust::can('edit-produto') ){
+            $categorias = Categoria::all();
+            return view('produtos.edit',compact('produto','categorias'));
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
+        
     }
 
     /**
@@ -98,8 +106,8 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        $produto->update($request->all());
-        return redirect()->route('produto.index')->with('message','Ítem foi atualizado com sucesso');
+        $produto -> update($request -> all());
+        return redirect() -> route('produto.index') -> with('message','Ítem foi atualizado com sucesso');
     }
 
     /**
@@ -110,7 +118,12 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        $produto->delete();
-        return redirect()->route('produto.index')->with('message','Ítem foi deletado com sucesso');
+        if ( Entrust::can('delete-produto') ) {
+            $produto->delete();
+            return redirect() -> route('produto.index') -> with('message','Ítem foi deletado com sucesso');
+        } else {
+            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+        }
+        
     }
 }

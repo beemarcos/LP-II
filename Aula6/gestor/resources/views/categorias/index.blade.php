@@ -17,8 +17,10 @@
                         <table class="table">
                             <tr>
                                 <th>Nome</th>
-                                <th>Ação</th>
-                            </tr>
+                                @if ( Entrust::can('edit-categoria') | Entrust::can('delete-categoria') ) 
+                                    <th>Ação</th>
+                                @endif
+                                </tr>
                             @foreach($categorias as $categoria)
                                 <tr>
                                     @if ( Entrust::can('show-categoria') )
@@ -34,7 +36,7 @@
                                         @endpermission
 
                                         @permission('delete-categoria')
-                                            {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
+                                            {!! Form::button('Excluir',['class' => 'btn btn-danger', 'type' => 'submit', 'onclick' => "return confirm('Você tem certeza que deseja excluir este item?')"]) !!}
                                         @endpermission
                                         {!! Form::close() !!}
                                     </td>

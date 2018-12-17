@@ -20,7 +20,9 @@
                                 <th>Preço</th>
                                 <th>Saldo</th>
                                 <th>Categoria</th>
-                                <th>Ação</th>
+                                @if ( Entrust::can('edit-produto') | Entrust::can('delete-produto') ) 
+                                    <th>Ação</th>
+                                @endif
                             </tr>
 
                             @foreach($produtos as $produto)
@@ -48,7 +50,7 @@
                                         @endpermission
 
                                         @permission('delete-produto')
-                                        {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit']) !!}
+                                        {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit', 'onclick' => "return confirm('Você tem certeza que deseja excluir este item?')"]) !!}
                                         @endpermission
                                         {!! Form::close() !!}
 
