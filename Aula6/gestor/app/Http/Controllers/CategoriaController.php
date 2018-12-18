@@ -15,9 +15,13 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $categorias = Categoria::all();
-        return view ('categorias.index',compact('categorias'));
+    {   
+        if ( Entrust::can('list-categoria') ) {
+            $categorias = Categoria::all();
+            return view ('categorias.index', compact('categorias'));
+        } else {
+            return redirect()->route('categoria.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
+        }
     }
 
     /**
@@ -30,9 +34,8 @@ class CategoriaController extends Controller
         if ( Entrust::can('create-categoria') ) {
             return view('categorias.create');
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('categoria.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
-        
     }
 
     /**
@@ -43,12 +46,16 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $this -> validate($request, [
-            'nome' => 'required|unique:categorias|min:3'
-        ]);
-
-        Categoria::create($request -> all());
-        return redirect() -> route('categoria.index')->with('message','Ítem foi adicionado com sucesso');
+        if ( Entrust::can('create-categoria') ){
+            $this -> validate($request, [
+                'nome' => 'required | unique:categorias | min:3'
+            ]);
+    
+            Categoria::create($request -> all());
+            return redirect()->route('categoria.index')->with('message', 'Ítem foi adicionado com sucesso');
+        } else {
+            return redirect()->route('categoria.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
+        }
     }
 
     /**
@@ -60,11 +67,10 @@ class CategoriaController extends Controller
     public function show(Categoria $categoria)
     {
         if ( Entrust::can('show-categoria') ){
-            return view('categorias.show',compact('categoria'));
+            return view('categorias.show', compact('categoria'));
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('categoria.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
-        
     }
 
     /**
@@ -76,11 +82,10 @@ class CategoriaController extends Controller
     public function edit(Categoria $categoria)
     {
         if ( Entrust::can('edit-categoria') ){
-            return view('categorias.edit',compact('categoria'));
+            return view('categorias.edit', compact('categoria'));
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('categoria.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
-        
     }
 
     /**
@@ -92,8 +97,12 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        $categoria -> update($request->all());
-        return redirect() -> route('categoria.index') -> with('message','Ítem foi atualizado com sucesso');
+        if ( Entrust::can('edit-categoria') ){
+            $categoria->update($request->all());
+            return redirect()->route('categoria.index')->with('message', 'Ítem foi atualizado com sucesso');
+        } else {
+            return redirect()->route('categoria.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
+        }
     }
 
     /**
@@ -106,10 +115,9 @@ class CategoriaController extends Controller
     {
         if ( Entrust::can('delete-categoria') ) {
             $categoria->delete();
-            return redirect() -> route('categoria.index') -> with('message','Ítem foi deletado com sucesso');
+            return redirect()-> route('categoria.index')->with('message', 'Ítem foi deletado com sucesso');
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('categoria.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
-        
     }
 }

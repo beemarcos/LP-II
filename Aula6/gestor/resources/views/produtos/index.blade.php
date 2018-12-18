@@ -9,6 +9,10 @@
                     <div class="alert alert-success">{{ Session::get('message') }}</div>
                 @endif
 
+                @if(Session::has('message-error'))
+                    <div class="alert alert-danger">{{ Session::get('message-error') }}</div>
+                @endif
+
                 <div class="panel panel-default">
                     <div class="panel-heading">Produtos</div>
 
@@ -53,8 +57,6 @@
                                         {!! Form::button('Excluir',['class'=>'btn btn-danger','type'=>'submit', 'onclick' => "return confirm('Você tem certeza que deseja excluir este item?')"]) !!}
                                         @endpermission
                                         {!! Form::close() !!}
-
-
                                     </td>
                                 </tr>
                             @endforeach

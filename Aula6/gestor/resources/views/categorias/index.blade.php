@@ -9,6 +9,10 @@
                     <div class="alert alert-success">{{ Session::get('message') }}</div>
                 @endif
 
+                @if(Session::has('message-error'))
+                    <div class="alert alert-danger">{{ Session::get('message-error') }}</div>
+                @endif
+
                 <div class="panel panel-default">
                     <div class="panel-heading">Categorias</div>
 

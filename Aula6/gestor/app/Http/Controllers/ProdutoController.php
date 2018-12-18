@@ -12,10 +12,6 @@ use Entrust;
 
 class ProdutoController extends Controller
 {
-    
-    
-    
-    
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +19,13 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::all();
-        $categorias = Categoria::all();
-        return view('produtos.index',compact('produtos','categorias'));
+        if ( Entrust::can('list-produto') ){
+            $produtos = Produto::all();
+            $categorias = Categoria::all();
+            return view('produtos.index', compact('produtos', 'categorias'));
+        } else {
+            return redirect()->route('produto.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
+        }     
     }
 
     /**
@@ -37,9 +37,9 @@ class ProdutoController extends Controller
     {
         if ( Entrust::can('create-produto') ){
             $categorias = Categoria::all();
-            return view('produtos.create',compact('categorias'));
+            return view('produtos.create', compact('categorias'));
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('produto.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
     }
 
@@ -51,17 +51,21 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nome' => 'required|unique:produtos|min:3',
-            'preco' => 'required',
-            'icms' => 'required',
-            'id_categoria' => 'required',
-            'saldo' => 'required',
-            'custo' => 'required',
-            'perecivel' => 'required'
-        ]);
-        Produto::create($request->all());
-        return redirect() -> route('produto.index') -> with('message','Ítem foi registrado com sucesso');
+        if ( Entrust::can('create-produto') ){
+            $this->validate($request, [
+                'nome'         => 'required | unique:produtos | min:3',
+                'preco'        => 'required',
+                'icms'         => 'required',
+                'id_categoria' => 'required',
+                'saldo'        => 'required',
+                'custo'        => 'required',
+                'perecivel'    => 'required'
+            ]);
+            Produto::create($request->all());
+            return redirect()->route('produto.index')->with('message', 'Item foi registrado com sucesso');
+        } else {
+            return redirect()->route('produto.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
+        }
     }
 
     /**
@@ -74,9 +78,9 @@ class ProdutoController extends Controller
     {
         if ( Entrust::can('show-produto') ) {
             $categorias = Categoria::all();
-            return view('produtos.show',compact('produto','categorias'));
+            return view('produtos.show', compact('produto', 'categorias'));
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('produto.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
     }
 
@@ -90,11 +94,10 @@ class ProdutoController extends Controller
     {
         if ( Entrust::can('edit-produto') ){
             $categorias = Categoria::all();
-            return view('produtos.edit',compact('produto','categorias'));
+            return view('produtos.edit', compact('produto', 'categorias'));
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('produto.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
-        
     }
 
     /**
@@ -106,8 +109,12 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        $produto -> update($request -> all());
-        return redirect() -> route('produto.index') -> with('message','Ítem foi atualizado com sucesso');
+        if ( Entrust::can('edit-produto') ) {
+            $produto -> update($request -> all());
+            return redirect()->route('produto.index') -> with('message', 'Ítem foi atualizado com sucesso');
+        } else {
+            return redirect()->route('produto.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
+        }  
     }
 
     /**
@@ -120,10 +127,9 @@ class ProdutoController extends Controller
     {
         if ( Entrust::can('delete-produto') ) {
             $produto->delete();
-            return redirect() -> route('produto.index') -> with('message','Ítem foi deletado com sucesso');
+            return redirect()->route('produto.index')->with('message', 'Ítem foi deletado com sucesso');
         } else {
-            echo('Ação negada! Você não tem permissão para executar esta tarefa');
+            return redirect()->route('produto.index')->with('message-error', 'Ação negada! Você não tem permissão para executar esta tarefa');
         }
-        
     }
 }
